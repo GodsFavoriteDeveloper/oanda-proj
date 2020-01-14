@@ -10,7 +10,7 @@ const reload = interval(5000);
   providedIn: 'root'
 })
 export class DataService {
-  url = 'http://localhost:3000/rates';
+  url = 'https://oanda-proj.herokuapp.com/rates';
   private rawRatesData = new Subject<Rates[]>();
 
 
