@@ -5,24 +5,7 @@ const axios = require('axios').default;
 const mongoose = require('mongoose');
 const Rates = require('./models/rates');
 const candles = require('./data');
-// var mysql = require('mysql');
 
-// var con = mysql.createConnection({
-//     host: "dedi350.flk1.host-h.net",
-//     user: "cavalcupjy_30",
-//     password: "65D6Cq3bMm4m3VqoHIc8",
-//     database: 'apollo_cavalryapps'
-//   });
-  
-//   con.connect(function(err) {
-//     if (err) throw err;
-//     console.log("Connected!");
-//     // let sql = `SELECT * FROM rates`;
-//     // con.query(sql, function (err, result) {
-//     //   if (err) throw err;
-//     //   console.log("Result: " + result);
-//     // });
-//   });
 
 const dbURL = 'mongodb+srv://normy:saber24teeth@mean-gxsi7.mongodb.net/mean-stack?retryWrites=true&w=majority'
 mongoose.connect(
@@ -61,21 +44,7 @@ app.get('', (req, res, next) => {
     .then(async (data) => {
         console.log(data.data);
 
-        response.send(data.data);
-
-        // await Rates.collection.deleteMany({}).then(() => {
-        //     console.log('deleted')
-        // })
-
-        // const ratesData = data.data.candles;
-        // await Rates.collection.insertMany(ratesData, function (err, docs) {
-        //     if (err){ 
-        //         return console.error(err);
-        //     } else {
-        //       console.log("Multiple documents inserted to Collection");
-        //       response.send('done')
-        //     }
-        //   });           
+        response.send(data.data);          
 
     }).catch((err) => {
         console.log(err);
@@ -119,9 +88,8 @@ app.get('/rates', (req, res, next) => {
             candles: rates
         });
     })
-    //res.send(candles);
+
 })
 
-//app.use('/api/posts', allRoutes);
 
 module.exports = app;
